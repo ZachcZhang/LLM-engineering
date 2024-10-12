@@ -39,9 +39,9 @@ export HOSTFILE=$code_path"hostfile"
 
 deepspeed  --num_nodes $NUM_NODES \
     --num_gpus $NUM_GPUS \
-	--hostfile $HOSTFILE \
+    --hostfile $HOSTFILE \
     --master_addr $MASTER_ADDR \
-	--master_port $MASTER_PORT \
+    --master_port $MASTER_PORT \
     --launcher SLURM \
     ${code_path}"cifar10_deepspeed-temp.py" \
     --deepspeed \
