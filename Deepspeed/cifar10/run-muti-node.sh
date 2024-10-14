@@ -43,6 +43,6 @@ deepspeed  --num_nodes $NUM_NODES \
     --master_addr $MASTER_ADDR \
     --master_port $MASTER_PORT \
     --launcher SLURM \
-    ${code_path}"cifar10_deepspeed-temp.py" \
+    ${code_path}"cifar10_deepspeed.py" \
     --deepspeed \
     --log-interval 100
