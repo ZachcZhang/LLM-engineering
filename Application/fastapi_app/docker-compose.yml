@@ -1,0 +1,33 @@
+version: "3.8"
+
+####################
+# ① 网络（可选）
+####################
+networks:
+  app_network:
+    driver: bridge    # 默认 bridge 网络，后续其他服务可复用
+
+####################
+# ② 服务定义
+####################
+services:
+  app:
+    # —— 构建镜像 —— #
+    build:
+      context: .               # 指向当前目录
+      dockerfile: Dockerfile   # 如有多 Dockerfile 可显式指定
+    image: image_name:latest     # 给镜像一个可读名字，便于复用
+    container_name: truescope_app
+    env_file:
+      - .env
+    ports:
+      - "${APP_PORT}:8000"           # 宿主:容器
+
+    volumes:
+      - ./files:/app/.files
+      - ./storage:/app/storage
+
+    restart: unless-stopped
+
+    networks:
+      - app_network
